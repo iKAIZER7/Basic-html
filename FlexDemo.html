@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adventure travle -explore the world</title>
+    <style>
+/* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Hero section with flexbox */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-size: cover;
+            background-position: center;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                              url('data:image/webp;base64,UklGRgAWAABXRUJQVlA4IPQVAACwWgCdASoAAbQAPp1InEqlpCKuKJoKQcATiUDh+TF/WdnprSypE+P/H+P1lUdv4REm3cZeZjzcfOb35fej7TLbNOLd2GJ3bQ7PeAE9btEcDPCT+Q6CP+l4j1ADyiv+HyPftH/E9gjy4/ZB+7vsufswTMJ8qYg8lv2/+ZNYbTRoPuqEIu93p51OVkTxlDoIAx2SGdfmd9Tw5SdNpIIKNJT4GVbtiu52qwG9lgIevpSD/J1665Yf0x02G4Oc4cQd8ng1wMPeUqTUt+RisgwFm6mWLeRw3qrJZLXnTvt42Q8N+2UNjWRGAN4lVaEwZTHqZyTTxxOTaQ/eIuYmzxLqpCNOVV0bkvdVnzWVI3LGLdvQBogyeoyQVy4Uq/5BPuSQmmTud0AMNEk5K2AkKlcGUIb/QUPp852vgyVxt/P+hadKKTwb919ZlrZY8FIPqmkjegqL+7l6t0Cj29TPTBD1AfjOb0OSKVoKEmcjTX3PrgdIP63m+XdC/4VyuD6FuTtuHzjCEyP14J7QeHDh1Ovw2Dp7p+bvV7OOqjc2fUNhV1r0XRMnXvHDcf56x5MaPotqcml/xQDcKX2zdbp5R2B9zHhXROHdBu2MeOkPcixxcEx5zjJdfy05MQZoKtRnbbvaUdO7ze7rsp51S9W71nOyqT0K3OeiOntB0TTQ82PTwIEjERtzoQWIU8LLMBBkYTk9ub6eIvrE8co+4V4/eP8z2mtejCX7szuO7j1oHvZKSLnsGDAPYfIHSlzqXEO66papuH0lT88bT4nhTsxOmDMgxuJfrRSqbw67zvKFeYbokeeDpsTCPTBf1or3ReGCA9aP1Uj8djGlje8n/VlbUddlOldRStnvQdtlenvw8JKmJaVvVBL6lxPYZMaFy2H04nFm7RvaSOYNRbyWsNXPMCQD9+IcCl61fVzD4F0X3FAsD4i4Z6jrz1GDGlsedmUCKB5YVm/xVHTEoijHa4hHO3YgUADzpvm2owzIx79qmupRraEFPU7//U4//r0f/5OP4Xv/npn/cv9kRxJjTdTjW4n5QdTiJkXtAo7Pb4nU3FSwvF1yWQ0LOol6Vlg24EH1vmIibKlDV4wwjmwVUbN1NHGBMyJmbF8iAy7ItcI82hEY6bvjOLN7L+AHtr7CMpV0omNJjIk0tJ/IygB4heu5m2I3z3pfScLkWx0F6q83fiPy/o8vFJr8FTu1BUBU3OR0K7u2H/LuYFWYGlx7VKKeKAVgh/HMoTdTNPdStDV8thHJZ1MekG81Lb4Wv/7RwXb9Uuw6yoFnuOu4SHG6FibK72v2coIgoQ2eR0zZyWetA7DpBANgY0l8sDuu+o9KRxqyKCSsJhSn2P5XE4TFFtrAfGvhcxaysxI0+svF15koelQ92dg+uWMQ4jfoE4b9BjP52ajdZkgsXImQP7UCAtT9Fi74wOrpxDMBuW/kMuxN3+CHb1flYXI9LMejsEpwLnioK9HaBT2/8Pa27UHh/ZnIs70Rf3itu+Qo/LDTyGeDXhGQHvB9+Tg9TDZ+lWSPf4ga4a08aOxEEvFOOkq3dLoVDA37ZsAZJLqlohOOFzKnU414Cj9wgBvGagQ6MQ1tkoSt5rgbsZ8EwCC/PesCkt6XujiOTjrGHgdhrYyBlHghEB2K0AFRoap87CbaxnsjOuf3p0SlFO7dyH4f47ND1cO2GEgclv+Kv6H7lI65V4NJrQAVvrJO7oVEhNs9EOoPG3OR/ky6OUEl8S1Cs8QCn4inZa1elKsZK3ZJb1vFdeLImNEkF8ihhViWWPnXno//GppplxZuA/jrIAOcIjWVHaPB2avfwbgfwf15a3ZUN+aLL2+0RYQC98D9wdWuEZQ3EDWJgccuCwnNAgzJAH0IHewF3l1WXjBdrTcAdnODTSd412xehRCDsKHB4oc4bjkM+W0oOoT6XEW5pUiE9+T14phlJ762QSRCiRGkkvaoEsF9mOrLWwT9oH+uR0e9ZAMiF1gYPYJsyEykG8xOZBNo9AdWS2rntCO5RMTRf6XbPyUr05R6FtjdXk/Ll04gIK+VUqQzCN13ii9e9VC7jynQehneVwGOXv7d8kLl30BMY4drv9YyLgM8OSy4fObvVsZgqscsDfHfBOOxAUTGrUcxogVNxwK27meAb9WRFNlpYTipUdTb01U/DX7PnvhwoFs/tOxvzplCUy43NGffJ0nh4ukAbRvhJnYny8SVASwfKqsVMC1+weqzfCROozo4M3ko+44NlCvMUS9BL9FBddGQkOrVtdT1PATm+oF2KEHMqo79EHqB8/xRDjXTMJVlEDVeI8RFV1oue3dBPhJ1I+kn1UJfTF/zLBK8M6GBbWn3ZYgUm7IekMfduMVRdFIaQsE61tF2CyymRadkmZ6SXUAyaLvirNTf0a3w9w0XmYcs5juC/GfU8XFntFZNjgqt1ebotMiSOQrkFLCWkSOQ+YRieCzn+V+uiuUgRNBgHSMPUaGNDA5I9RiVgWmp1whMonwH7G/Y85hesOSf35ZyTjPKRYKEKIdppdzB1QW8cFl64tBUjsGoo0xD+Tx0/atdXj/D7E/gLheTuuuiwV5h3xJRtpEk246GP59n/d88i7TQCClmBT8Aj0jMvyRvyu0ARo+mAENaBtIoVda4EE5x30DRmxG7cebVcR60xb0wQ3G9TUTPzuBcPzrhZgI512rzV8RisVwWb/W1sQ6Ggo9HZP6SDVmLoEpdH7fgJchKJ9ZLldhsPdc+Xn4J+U13GRG18qx7MQK81zp3ZNT27SlwRp5chwEtPzhakP6lZulS8h/XiV0zjGnOyolV4jhHbPkuitnvO3glWQbL2ikBtdCDKSmW2m1oKG13sPCjRKNQrISVS8hZ4hGvmNMzEXoukoBaMFYBNaoQPfqBSdf20do631pX/wSLF1iqfRKCkFclf4ZstOIsAXDRoM7RoCTpSpD8NB6nMcG8odM/55EKmUo7SbYGmMEhe5spNRo5iMybWRXNa7gMR/lmtSj8CWMFOjGyP9D4OtUn6VZsPR/z+T2tdnswSqOwV5PXfAYwPZAgpsnfjAOHOvQO0fV+ANz9zKDdDVnkobwKUP0eKWyIh0sUH1ZWFNAyqE14tyZ8a2iS9oYvAWTFoKcJtDWDpSproLQpNiEz4niXbKYlFUFC96CcKg+j+/VVg8HQ/J+Cq2NWqv52EAaa3iGDFFRTdrpXEpzXJ8yZpPR8PHc6K7qRTGCl9bUWKOkFCuD3M/OEboNyVRejAQcM5IqTiVg2PmvdBtSHhoDQaWVoKzHegqffpE53SN/uf9KYhO82NhzdUTyFaqf/xLhsQcIJFp8JYPjNbc2vPwv1J7jqufl8KaIESMaJr99+HwWs6G2fG3DWr5WxGeMYR8JqrBkA02+29G6PUuz56UcFfV0MBTCOevi8XhGyyymtIGlBR8d/TIMz0hcQGqOtu0pjgX7mag9IP5Y/FhW+Sms2vGxDGQxKpAZKp+jd/Zu+0B0gNEG9zKZ7Aa6FMW2JZzsQgYbDGtSzo0Mimc8KzDWE0BXEish0i5kTjsAf9Ve4y7mP2vSxAcGqWBiDSWi2bssiHXC2EAOUHqjxRZXAJMPwkUu+BM9g7gOVGDa6daJaY/WlPomz8Z8UYG1ey6z/JgGQXOHAanVQeSmbFonMDj7Wn3ck4GXStDExFpmDzidp2MKPP2r2QGbc82f2Lrix3dV/mPVdV1NBmyVLbcknNoxtRfe8lJejd1tZmiW2EWILzTrKXD6L20qbfwbR3Aps/RQYeycWPcAq1R8dstGZvxyn9TvMIype98GQfN7Kv/YTOyuD8zT6C1b5hZoM+HZQfLpslhvsG3y8Ge+S6863eCVfVlvzrlSkDQX0kJTRQ/ZmfSN7X5KU5XyUaHvrx0bbxXQgjmetuN/iIF44vcEe1tg1WOS/9JCmWuJOhMiDVBGmFttEEPAbcFsjoWfXLXo06KwD6uXwEOaznsxRGxX6hykVxsvF4XNNjHHezAITJP0CmAJ8pakJ1ibWt9l5ryULyTT1XGPX9an9y1YbYmuvMmuG79wxMG1HmmffC4dQiy5GraR63Jw+6ND9SVkPBa8k0U/YfjgBVsLiN132+jead0yRRXhS20Uvfx35N0lLYfz3lIh/yr0yninQcl1afeb5ILoIbMowa64M0QSRZFEmOckOY7FamYKO1gjYUP7YhILR098wm/BEaIAVhNxECrMxb895TyWPVUqikrIdtanQnAa562vW/MH1ZJTKUX5bUHlz5a+e5KEydkMRFLw9G4dwkOSL4mKFjl7hL//3eK9dUnih62d3GXByMjvgLiPzcCF63JRTynK8OAz3wJfIleYc6mriWK2uQZ5cwo/FX73XO13W48LaqzAGtaQuovGqWqSZSby52bC9pnnEDmZdSsOhK2JxgnXa4dSVd7Gpo++kcepsA9MuTMc0zjB3q5RwI9FLCaLtROuIZL7qfq/mUA/b0wSMs5y7Eejeu9QtIqk7IEQoG96uGSc/9eCowgyGVVaDCrBBGXFwZz8Q4AU7rxkcTw6kqTQF+2mqMjRtxPmCmeFjfzEC9sAHC2Tv8+rKBNuBEVQE+LIVE/KZCEN/tySBaWotvFN3u0GdIJf7befV8eIJTkdGKfnAoIkmc3NKeOBuz8kxNi1PYZJWLFcK/RISCwFR4ao4U/V/xChkO/PYaHSaelrqYva+in06xiAgnLa86j4pnQx0JebWBaaJTXtLwF/Ya/9NGVxaFx00Vb3t3YerxbXlV2tjvwZNJglKEdmHtPE6RegZ02YDMzpzEbpMYpa6d27O5lAiRnLWlH5BcS/osgwqPLoWI6zx016QpcBqDrzbllJdK5LKEO20Nw5FAD3+QUQ3/2heC2/4VeKIAyR/PJeHIoZn0fnhxnYtEVt4IddRaLx8IpHTYJnu+CfPmCyrzASRskyyrDP2diueXYWbihmY4j+CsN4V927BR5RvB26uYJOk4EhtDPGd+zBvfUz/OXFu1u/riMFwf1Kt5fB6+HUUjB25Phnn4596MaDue3GZV1kLuAyVkfNvCwFI8whoK2zQMDHvQfiy5OQTAl0PSseJR8mvajUCdg+7br9IwGcgY/s6v7mUmP3PDYszwxwRhe63L6LrDTsdyzUdHNHQSFCyuEleE+SjRvLMKrh/smbXfIUXr9z1+zF4HfKTfVx7JEkB/ge2IbEkyFwlrU/SMymfJrPJIeoU75t7cdxJKJmHfMbzFHZSWUPti1DZeLh0A8Z94D486qJjFK3wj4GBxThAchmiBZ3kfBw4g8YPm83tenfAOjQFHYt5aXvuXGtYNpivsppGmvNJ6dnbHrtWHBXA3zcGDlWZQeK2Bo32xykQuLfu9h+9zK6mYOOsoWlctSQqWgnIZZjKMFKwesZCK//ye68IJqimB5hC9/dmvwqdH+7+cUR8iO3vsD72OUoVLDWJZaU6+nWBAuLd8CU2SSvR/QMGRYGgRRuVYlztpJZ62wWN7nU/JRUrXwbKMWe6bCPLvayVYzbuA2tv1pJeMsexzN+7feKVupO1q54Wl6pj7yCclmZy9G36+Zf0n1gUmzveDNlF4uOcY97YaFO8uDPJvB2+t1ikb7TKGgRuszJ4kKmZgyX0anjIU+nh6A72Ju9iilZ3jxRVm8lisU7bLjsU9FY/MPf8CP/3ZC3eeYc3bWPbApPxUwJeLQBPY7BSemZseLDp0LVQ+vDNSm2n+CIbnTOqLBU4FkpmmIBEdTKMcJ6IjT6/pVE7hi2VYH8X+kCXLN0N1f2k2JSHrUll9/96MIZCX6PDhgCHVuFqMBR7250c0jCnjk+vu6eUYQTdIx1Ur9z7/pzk8mBP7QdQ039xrWOia2U7a5gMz0YHKWJxwdQ4VS+ZX7HxxAbOGr1hg3sBFZPH7335QXrSBkvo14uSvy8+n2ETEOLS3lHnJHR2rn+OXpe+C8p2keAV6Tomz+++kzbHLEgk0O4JglgXLryAvIGBMv8sxtuf/MZOSR6UcPyUdrsJGGs9dq8RZcfCt7JSdxopCrbVD4Tj6ykMwJA/08MsEUTNpUoXl6Uzb96NJrn1efCm2TDVBmbOFOkN6Bqk6isJ2D8jwZk1xH/RJhczviIXFtIPid0xgESPkYyhZ7sLDKeXZWf+0z8rMLe72xLy4JdQL3xZBji2WI8r+R5G3tGA/KagEMdlN7lx8QULCXGTlYQTzbdhMKnxXuT+R09ibgPqP3xrm2i70gG19Skfm0gWk9eWBKpLpeBpkqmOrpg9qSIX5OWSZIJML2crsEKkCLeDpdTOq0svkEM86/yXQEUkEY0AMNejIhLlmlAjGYfUzXWXSw93Wz6JGttwSxbUZvkEMjkO0Bo5A6E+4qSBXvrPBq+O/4+HO8wI/iy+LVjFEDrBqQtoOHzi6tL1ctmHZ/mMEv7w1B7sVqf2zjoAuJpC7ixnBbBhCsvJHYgTGeNzLoVzifKMYe4XVdJIOyJCaCe3vaQfpeEtM0pfjBReu+w7y7PRPu89Nzc5DZponkc4pxDYpqy9ioVzM9sUtFaVbLaC8bAriFi5SjP4aHMYDHZPfOO0q0Re39UtcfXwJkRgRVAMA24NoE6117jJgCsBtJDyDNyIcFF7OLj7mFPC685CJxg9G/H3QIsZyJDAfe8dEyl+rguKQCozn87rTJR7zv1Lmd4fHoKjWH8Is2vLt1s3Pdj4ey3IUVkbWuBu+hXj8f+jfrqE7IvgMGypZ32lHcb1nGuNIlpFJcPxSvsg2NjAhTo91py9E7ClxpRDyNTuFOjA5UAX4UFHDSg5EuNQ/cGMaoRiECMuIHbCBW4xImmaPcwR8IAHkQqd/niqVZP79laZo1wLW2PIrwPp5PqcxBdC85l+wg8ogVMm5/gdCW0gexcSDFrBdJPKAi5OhALEBFnzhMf/rxg6mCXE+yxviBVLyRZk1ixoPYkv5morYQ2nizhdeQtvQfcGYDjGmrr8pRYBtRXvg7iiqrD3ARsh4ywB2dpmeAMWUsCA+pXbPmYviyOEOd+chsbawZn23Tnnz8c49ON/36CYMwaYvCMukafTfGbY+Ee0ftdFjReaWg4rNvMZ1r9Xf4xIprsEMKoSpb4NKQCUt7o1DQyW+5ssOY0WBuAXNW9Y6cHDbVFH8UkaXkmY9ha3kzp51ubEbaIbVE8soZlwPR5Vujhl9Xnc8rsP7wsEqCkiwF2Uut1QDa23pilTAEVa1JRZo/xuJH6pBvuWe/1Ndz6CZ5+HHAlrYRHOD4gBcM7GwLwpHXTBhaG+SIvlX4ghf7qSgzRco35DsPeZAKCqMJTuxZa16h9eE0mCC7lpOQOBpy9s1H2PDtsyxeSF76V8zCTNOaOv+5uGtLrFxYwyXAIY/sXqIW2I8QvASin1rIMeSP/Of2yoB8Jx7tp2SRJtOeQ6AJ9lqIYBzjRBOaM0FkO86wNIpbfTT+W9+AiN7vG/TuZdzGVIGIvJTgqCU4NmK4dEyA3Sv8c6uthpwZTpFd7uCDcxtCEmi8z2WwJHNaruCslVwKAJqyDXDFPCbAAA');
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        /* Hero content container */
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Text content */
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Call-to-action buttons */
+        .cta-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: #ff6b6b;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid #ff6b6b;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: #ff6b6b;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: #333;
+        }
+        
+        /* Search box */
+        .search-box {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            max-width: 800px;
+            width: 100%;
+        }
+        
+        .search-box input, 
+        .search-box select {
+            padding: 1rem;
+            margin: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            flex-grow: 1;
+            min-width: 200px;
+        }
+        
+        .search-box button {
+            padding: 1rem 2rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0.5rem;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .btn {
+                padding: 0.8rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Discover Your Next Adventure</h1>
+            <p>Explore breathtaking destinations around the world with our expertly crafted travel experiences.</p>
+            
+            <div class="search-box">
+                <input type="text" placeholder="Where do you want to go?">
+                <select>
+                    <option value="">Any duration</option>
+                    <option value="weekend">Weekend getaway</option>
+                    <option value="1week">1 week</option>
+                    <option value="2week">2 weeks</option>
+                </select>
+                <button type="submit">Search</button>
+            </div>
+            
+            <div class="cta-buttons">
+                <a href="#" class="btn">Book Now</a>
+                <a href="#" class="btn btn-outline">Learn More</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
